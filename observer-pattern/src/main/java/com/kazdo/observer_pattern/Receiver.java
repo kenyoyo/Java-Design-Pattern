@@ -13,10 +13,8 @@ public class Receiver implements IObserver{
 	
 	@Override
 	public void update(IObservable updateNews) {
-		if(updateNews.getClass().equals(News.class)) {
-			News news = (News) updateNews;
-			addContent(news.getContent());
-		}
+		News news = (News) updateNews;
+		addContent(news.getContent());
 	}
 	
 	public void addContent(String content) {

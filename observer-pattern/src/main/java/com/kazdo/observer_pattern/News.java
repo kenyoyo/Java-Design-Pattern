@@ -15,6 +15,7 @@ public abstract class News implements IObservable{
 	
 	public void add(IObserver receive) {
 		receiverList.add(receive);
+		receive.update(this);
 	}
 
 	public void remove(IObserver receive) {
@@ -22,8 +23,8 @@ public abstract class News implements IObservable{
 	}
 
 	public void notice() {
-		for(IObserver observe : receiverList) {
-			observe.update(this);
+		for(IObserver receiver : receiverList) {
+			receiver.update(this);
 		}
 	}
 
@@ -35,4 +36,8 @@ public abstract class News implements IObservable{
 		this.content = content;
 	}
 	
+	
+	public List<IObserver> getReceiverList() {
+		return receiverList;
+	}
 }
